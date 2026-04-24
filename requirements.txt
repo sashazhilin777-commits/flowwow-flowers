@@ -4,4 +4,3 @@ Flask-Login==0.6.3
 Flask-WTF==1.2.1
 Werkzeug==3.0.3
 gunicorn==22.0.0
-pillow==10.3.0
