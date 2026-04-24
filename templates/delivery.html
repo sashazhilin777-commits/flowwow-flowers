@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="animate-on-scroll" style="opacity:0; transform:translateY(30px);">
+    <h1 class="display-3 text-center fw-bold mb-5" style="color:#1f5e3a;">🚚 Доставка и оплата</h1>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+                <i class="fas fa-clock fa-3x text-success mb-3"></i>
+                <h4>Время доставки</h4>
+                <p>Ежедневно с 9:00 до 21:00. Срочная доставка от 90 минут в пределах города.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+                <i class="fas fa-map-marked-alt fa-3x text-success mb-3"></i>
+                <h4>Зоны доставки</h4>
+                <p>Доставка по всему городу и пригороду в радиусе 20 км. Бесплатно при заказе от 3000 ₽.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+                <i class="fas fa-credit-card fa-3x text-success mb-3"></i>
+                <h4>Оплата</h4>
+                <p>Наличными курьеру, банковской картой онлайн, оплата частями (4 платежа без переплат).</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5 p-4 bg-white rounded-4 shadow">
+        <h3 class="text-center mb-3">Как мы заботимся о свежести?</h3>
+        <p>Каждый букет собирается непосредственно перед отправкой. Мы используем специальные контейнеры с водным гелем, чтобы цветы чувствовали себя комфортно в пути. Курьеры проходят обучение по бережному обращению с хрупкими композициями.</p>
+    </div>
+</div>
+{% endblock %}

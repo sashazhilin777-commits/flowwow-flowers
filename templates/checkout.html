@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Оформление заказа</h2>
+<div class="row"><div class="col-md-7"><form method="POST">{{ form.hidden_tag() }}{% for field in [form.customer_name, form.customer_phone, form.delivery_address, form.comment] %}<div class="mb-3">{{ field.label }} {{ field(class="form-control") }}</div>{% endfor %}{{ form.submit(class="btn btn-success") }}</form></div><div class="col-md-5"><div class="card p-3"><h5>Ваш заказ</h5>{% for product, qty, subtotal in items %}<div>{{ product.name }} x {{ qty }} = {{ subtotal }}₽</div>{% endfor %}<hr><h5>Итого: {{ total }}₽</h5></div></div></div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Админ-панель</h2>
+<a href="/admin/product/add" class="btn btn-success mb-3">➕ Добавить товар</a>
+<a href="/admin/category/add" class="btn btn-info mb-3">📁 Добавить категорию</a>
+<h4>Товары</h4>
+<table class="table"><thead><tr><th>ID</th><th>Название</th><th>Цена</th><th>Хит</th><th>Действия</th></tr></thead><tbody>{% for p in products %}<tr><td>{{ p.id }}</td><td>{{ p.name }}</td><td>{{ p.price }}₽</td><td>{{ "Да" if p.is_hit else "Нет" }}</td><td><a href="/admin/product/edit/{{ p.id }}" class="btn btn-sm btn-warning">Ред.</a> <a href="/admin/product/delete/{{ p.id }}" class="btn btn-sm btn-danger">Удалить</a></td></tr>{% endfor %}</tbody></table>
+<h4>Категории</h4><ul>{% for c in categories %}<li>{{ c.name }} <a href="/admin/category/delete/{{ c.id }}" class="text-danger">[удалить]</a></li>{% endfor %}</ul>
+{% endblock %}

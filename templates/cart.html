@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Корзина</h2>
+{% if items %}
+<table class="table table-bordered"><thead><tr><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Сумма</th><th></th></tr></thead><tbody>{% for product, qty, subtotal in items %}<tr><td><img src="/static/uploads/{{ product.image_filename }}" width="60"> {{ product.name }}</td><td>{{ product.price }}₽</td><td><input type="number" min="1" value="{{ qty }}" class="form-control qty" style="width:80px" data-id="{{ product.id }}"></td><td>{{ subtotal }}₽</td><td><a href="/cart/remove/{{ product.id }}" class="btn btn-sm btn-danger">Удалить</a></td></tr>{% endfor %}</tbody><tfoot><tr><td colspan="3" class="text-end fw-bold">Итого:</td><td colspan="2" class="fw-bold">{{ total }}₽</td></tr></tfoot></table>
+<a href="/checkout" class="btn btn-primary">Оформить заказ</a>
+<script>document.querySelectorAll('.qty').forEach(i=>i.addEventListener('change',function(){let id=this.dataset.id;window.location.href=`/cart/update/${id}/${this.value}`}))</script>
+{% else %}<p>Корзина пуста. <a href="/catalog/">Перейти в каталог</a></p>{% endif %}
+{% endblock %}

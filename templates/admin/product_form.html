@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ title }}</h2>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">{{ form.name.label }} {{ form.name(class="form-control") }}</div>
+    <div class="mb-3">{{ form.category_id.label }} {{ form.category_id(class="form-select") }}</div>
+    <div class="mb-3">{{ form.price.label }} {{ form.price(class="form-control") }}</div>
+    <div class="mb-3">{{ form.old_price.label }} {{ form.old_price(class="form-control") }}</div>
+    <div class="mb-3">{{ form.description.label }} {{ form.description(class="form-control", rows=4) }}</div>
+    <div class="mb-3">{{ form.stock.label }} {{ form.stock(class="form-control") }}</div>
+    <div class="mb-3">{{ form.rating.label }} {{ form.rating(class="form-control") }}</div>
+    <div class="mb-3">{{ form.rating_count.label }} {{ form.rating_count(class="form-control") }}</div>
+    <div class="form-check mb-3">{{ form.is_active(class="form-check-input") }} {{ form.is_active.label }}</div>
+    <div class="form-check mb-3">{{ form.is_hit(class="form-check-input") }} {{ form.is_hit.label }}</div>
+    <div class="mb-3">{{ form.image.label }} {{ form.image(class="form-control") }}</div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}
