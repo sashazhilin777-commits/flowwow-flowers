@@ -1,90 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 class="mb-4 display-5 text-center animate-on-scroll">🛍️ Ваша корзина</h2>
-
+<h2 class="mb-4 display-5 text-center animate-on-scroll">Ваша корзина</h2>
 {% if items %}
 <div class="table-responsive animate-on-scroll">
     <table class="table align-middle">
         <thead class="table-danger">
-            <tr>
-                <th>Товар</th>
-                <th>Цена</th>
-                <th>Количество</th>
-                <th>Сумма</th>
-                <th></th>
-            </tr>
-        </thead>
+            <tr><th>Товар</th><th>Цена</th><th>Количество</th><th>Сумма</th><th></th></tr></thead>
         <tbody>
-            {% for product, qty, subtotal in items %}
-            <tr>
-                <td>
-                    <div class="d-flex align-items-center gap-3">
-                        <img src="/static/uploads/{{ product.image_filename }}" width="70" height="70" class="rounded-3 shadow-sm">
-                        <strong class="fs-5">{{ product.name }}</strong>
-                    </div>
-                </td>
-                <td class="price">{{ product.price }} ₽</td>
-                <td>
-                    <div class="input-group" style="width: 130px;">
-                        <button class="btn btn-outline-danger btn-sm dec" data-id="{{ product.id }}">−</button>
-                        <input type="text" class="form-control text-center qty-val" value="{{ qty }}" data-id="{{ product.id }}" readonly style="background:#fff;">
-                        <button class="btn btn-outline-danger btn-sm inc" data-id="{{ product.id }}">+</button>
-                    </div>
-                </td>
-                <td class="fw-bold fs-5">{{ subtotal }} ₽</td>
-                <td>
-                    <a href="/cart/remove/{{ product.id }}" class="btn btn-sm btn-outline-danger">
-                        <i class="fas fa-trash-alt"></i> Удалить
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
+        {% for product, qty, subtotal in items %}
+        <tr>
+            <td><div class="d-flex align-items-center gap-3"><img src="/static/uploads/{{ product.image_filename }}" width="70" height="70" class="rounded-3"><strong>{{ product.name }}</strong></div></td>
+            <td class="price">{{ product.price }} ₽</td>
+            <td><div class="input-group" style="width:130px;"><button class="btn btn-outline-danger btn-sm dec" data-id="{{ product.id }}">−</button><input type="text" class="form-control text-center qty-val" value="{{ qty }}" data-id="{{ product.id }}" readonly><button class="btn btn-outline-danger btn-sm inc" data-id="{{ product.id }}">+</button></div></td>
+            <td class="fw-bold fs-5">{{ subtotal }} ₽</td>
+            <td><a href="/cart/remove/{{ product.id }}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i> Удалить</a></td>
+        </tr>
+        {% endfor %}
         </tbody>
-        <tfoot>
-            <tr class="table-light">
-                <td colspan="3" class="text-end fw-bold fs-4">Итого:</td>
-                <td colspan="2" class="fw-bold fs-3 text-danger">{{ total }} ₽</td>
-            </tr>
-        </tfoot>
+        <tfoot><tr class="table-light"><td colspan="3" class="text-end fw-bold fs-4">Итого:</td><td colspan="2" class="fw-bold fs-3 text-danger">{{ total }} ₽</td></tr></tfoot>
     </table>
 </div>
 <div class="text-end mt-4 animate-on-scroll">
-    <a href="/checkout" class="btn btn-primary btn-big">
-        <i class="fas fa-credit-card"></i> Оформить заказ
-    </a>
-    <a href="/catalog/" class="btn btn-outline-crimpon ms-3">
-        <i class="fas fa-arrow-left"></i> Продолжить покупки
-    </a>
+    <a href="/checkout" class="btn btn-primary btn-big"><i class="fas fa-credit-card"></i> Оформить заказ</a>
+    <a href="/catalog/" class="btn btn-outline-danger ms-3">Продолжить покупки</a>
 </div>
-
 <script>
-    // Обработка кнопок +/-
-    document.querySelectorAll('.inc').forEach(btn => {
-        btn.addEventListener('click', function() {
-            let id = this.dataset.id;
-            let input = document.querySelector(`.qty-val[data-id="${id}"]`);
-            let newQty = parseInt(input.value) + 1;
-            window.location.href = `/cart/update/${id}/${newQty}`;
-        });
-    });
-    document.querySelectorAll('.dec').forEach(btn => {
-        btn.addEventListener('click', function() {
-            let id = this.dataset.id;
-            let input = document.querySelector(`.qty-val[data-id="${id}"]`);
-            let newQty = parseInt(input.value) - 1;
-            if (newQty >= 1) {
-                window.location.href = `/cart/update/${id}/${newQty}`;
-            } else {
-                window.location.href = `/cart/remove/${id}`;
-            }
-        });
-    });
+    document.querySelectorAll('.inc').forEach(btn => btn.addEventListener('click', function() { let id = this.dataset.id; let input = document.querySelector(`.qty-val[data-id="${id}"]`); let newQty = parseInt(input.value) + 1; window.location.href = `/cart/update/${id}/${newQty}`; }));
+    document.querySelectorAll('.dec').forEach(btn => btn.addEventListener('click', function() { let id = this.dataset.id; let input = document.querySelector(`.qty-val[data-id="${id}"]`); let newQty = parseInt(input.value) - 1; if (newQty >= 1) { window.location.href = `/cart/update/${id}/${newQty}`; } else { window.location.href = `/cart/remove/${id}`; } }));
 </script>
 {% else %}
-<div class="text-center py-5 animate-on-scroll">
-    <i class="fas fa-shopping-cart fa-5x text-muted mb-3"></i>
-    <h3>Корзина пуста</h3>
-    <a href="/catalog/" class="btn btn-primary mt-3">Перейти в каталог</a>
-</div>
+<div class="text-center py-5"><i class="fas fa-shopping-cart fa-5x text-muted mb-3"></i><h3>Корзина пуста</h3><a href="/catalog/" class="btn btn-primary mt-3">Перейти в каталог</a></div>
 {% endif %}
 {% endblock %}
