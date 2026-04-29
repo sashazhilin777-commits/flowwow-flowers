@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- Hero-блок с параллаксом -->
-<div class="hero-section text-center py-5 mb-5" style="background: radial-gradient(circle at 10% 30%, #fce8e0, #ffe0f0); border-radius: 64px; padding: 80px 20px;">
-    <h1 class="display-1 fw-bold animate-on-scroll" style="color: #1f5e3a; animation-delay:0s;">Свежие цветы</h1>
-    <p class="lead fs-2 animate-on-scroll" style="animation-delay:0.1s;">с доставкой за 90 минут</p>
-    <a href="/catalog/" class="btn btn-primary btn-big mt-4 animate-on-scroll" style="animation-delay:0.2s;"><i class="fas fa-seedling"></i> Смотреть каталог</a>
+<div class="hero-section text-center py-5 mb-5" style="background: radial-gradient(circle at 10% 30%, #fce8e0, #ffe0f0); border-radius: 64px;">
+    <h1 class="display-1 fw-bold animate-on-scroll" style="color:#b22222;">Свежие цветы</h1>
+    <p class="lead fs-2 animate-on-scroll">с доставкой за 90 минут</p>
+    <a href="/catalog/" class="btn btn-primary btn-lg mt-4 animate-on-scroll">Смотреть каталог</a>
 </div>
 
-<!-- Хиты продаж -->
 {% if hits %}
-<h2 class="text-center mb-4 display-5 fw-bold animate-on-scroll">🔥 Хиты продаж</h2>
+<h2 class="text-center mb-4 display-5 fw-bold">Хиты продаж</h2>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
     {% for product in hits %}
-    <div class="col animate-on-scroll" style="animation-delay:{{ loop.index0 * 0.05 }}s;">
-        <div class="card h-100">
-            <div class="badge-hit">Хит 🔥</div>
+    <div class="col animate-on-scroll">
+        <div class="card h-100 position-relative">
+            <div class="badge-hit">Хит</div>
             <img src="/static/uploads/{{ product.image_filename }}" class="card-img-top" alt="{{ product.name }}">
             <div class="card-body">
                 <h4>{{ product.name }}</h4>
@@ -23,8 +21,8 @@
                 <p class="price mt-2">{{ product.price }} ₽
                     {% if product.old_price %}<span class="old-price">{{ product.old_price }} ₽</span>{% endif %}
                 </p>
-                <p class="text-success fw-bold"><i class="fas fa-credit-card"></i> {{ (product.price / 4)|round|int }} ₽ x 4 платежа</p>
-                <a href="/product/{{ product.id }}" class="btn btn-outline-success w-100">Подробнее →</a>
+                <p class="fw-bold"> {{ (product.price / 4)|round|int }} ₽ x 4 платежа</p>
+                <a href="/product/{{ product.id }}" class="btn btn-outline-danger w-100">Подробнее</a>
             </div>
         </div>
     </div>
@@ -32,11 +30,10 @@
 </div>
 {% endif %}
 
-<!-- Новинки -->
-<h2 class="text-center mb-4 display-5 fw-bold animate-on-scroll">✨ Новинки</h2>
+<h2 class="text-center mb-4 display-5 fw-bold">Новинки</h2>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     {% for product in new_products %}
-    <div class="col animate-on-scroll" style="animation-delay:{{ loop.index0 * 0.05 }}s;">
+    <div class="col animate-on-scroll">
         <div class="card h-100">
             <img src="/static/uploads/{{ product.image_filename }}" class="card-img-top">
             <div class="card-body">
@@ -44,33 +41,32 @@
                 <div class="stars">★★★★★</div>
                 <small class="text-muted">{{ product.rating }} ({{ product.rating_count }})</small>
                 <p class="price mt-2">{{ product.price }} ₽</p>
-                <p class="text-success fw-bold"><i class="fas fa-credit-card"></i> {{ (product.price / 4)|round|int }} ₽ x 4 платежа</p>
-                <a href="/product/{{ product.id }}" class="btn btn-outline-success w-100">Подробнее →</a>
+                <p class="fw-bold">{{ (product.price / 4)|round|int }} ₽ x 4 платежа</p>
+                <a href="/product/{{ product.id }}" class="btn btn-outline-danger w-100">Подробнее</a>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
 
-<!-- Блок преимуществ -->
 <div class="row mt-5 pt-5 text-center g-4">
     <div class="col-md-3 animate-on-scroll">
-        <i class="fas fa-truck-fast fa-3x text-success"></i>
+        <i class="fas fa-truck-fast fa-3x text-danger"></i>
         <h4 class="mt-2">Быстрая доставка</h4>
         <p>За 90 минут или бесплатно</p>
     </div>
     <div class="col-md-3 animate-on-scroll">
-        <i class="fas fa-hand-holding-heart fa-3x text-success"></i>
+        <i class="fas fa-hand-holding-heart fa-3x text-danger"></i>
         <h4 class="mt-2">Лучшие флористы</h4>
         <p>Авторские букеты от профи</p>
     </div>
     <div class="col-md-3 animate-on-scroll">
-        <i class="fas fa-leaf fa-3x text-success"></i>
+        <i class="fas fa-leaf fa-3x text-danger"></i>
         <h4 class="mt-2">Свежесть 100%</h4>
         <p>Цветы прямо с плантации</p>
     </div>
     <div class="col-md-3 animate-on-scroll">
-        <i class="fas fa-gem fa-3x text-success"></i>
+        <i class="fas fa-gem fa-3x text-danger"></i>
         <h4 class="mt-2">Подарочная упаковка</h4>
         <p>Бесплатно к каждому заказу</p>
     </div>
