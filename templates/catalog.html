@@ -46,12 +46,9 @@
                     <img src="/static/uploads/{{ product.image_filename }}" class="card-img-top" alt="{{ product.name }}" style="height: 230px; object-fit: cover;">
                     <div class="card-body">
                         <h4>{{ product.name }}</h4>
-                        <div class="stars">★★★★★</div>
-                        <small class="text-muted">{{ product.rating }} ({{ product.rating_count }} отзывов)</small>
                         <p class="price mt-2">{{ product.price }} ₽
                             {% if product.old_price %}<span class="old-price">{{ product.old_price }} ₽</span>{% endif %}
                         </p>
-                        <p class="fw-bold">{{ (product.price / 4)|round|int }} ₽ x 4 платежа</p>
                         <a href="/product/{{ product.id }}" class="btn btn-outline-danger w-100 py-2">Подробнее</a>
                     </div>
                 </div>
