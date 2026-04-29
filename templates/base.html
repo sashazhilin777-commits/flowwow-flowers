@@ -2,36 +2,27 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>🌹 CrimsonBloom | Свежие цветы с доставкой</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrimsonBloom | Цветы с доставкой</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
             background: linear-gradient(145deg, #fff0f3 0%, #ffe4e8 100%);
-            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-        .main-content {
-            flex: 1;
-        }
+        .main-content { flex: 1; }
         .container-fluid-custom {
             width: 100%;
             max-width: 1600px;
             margin: 0 auto;
             padding: 0 24px;
         }
-        @media (max-width: 768px) {
-            .container-fluid-custom { padding: 0 16px; }
-        }
-        /* Навбар – красно-розовый градиент */
+        @media (max-width:768px){ .container-fluid-custom{ padding:0 16px; } }
         .navbar {
             background: linear-gradient(135deg, #b22222, #8b0000);
             padding: 0.8rem 0;
@@ -39,131 +30,72 @@
             animation: slideDown 0.6s ease-out;
         }
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-100%);}
-            to { opacity: 1; transform: translateY(0);}
+            from{ opacity:0; transform:translateY(-100%);}
+            to{ opacity:1; transform:translateY(0);}
         }
-        /* Логотип и бренд */
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.9rem;
+            gap: 12px;
+            font-size: 1.8rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(45deg, #ffb6c1, #ff69b4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            color: white;
+            text-decoration: none;
         }
-        .navbar-brand:hover {
-            transform: scale(1.02);
+        .navbar-brand i {
+            font-size: 2rem;
+            color: #ffb6c1;
         }
-        .navbar-brand img {
-            height: 45px;
-            width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-        /* Ссылки навигации */
         .nav-link {
             font-size: 1.1rem;
             font-weight: 500;
             margin: 0 8px;
+            color: #fff !important;
             transition: 0.2s;
             position: relative;
-            color: #fff !important;
         }
-        .nav-link:hover {
-            transform: translateY(-3px);
-            color: #ffb6c1 !important;
-        }
+        .nav-link:hover{ color:#ffb6c1 !important; transform:translateY(-3px); }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #ffb6c1;
-            transition: 0.3s;
-            transform: translateX(-50%);
-            border-radius: 2px;
+            content:'';
+            position:absolute;
+            bottom:-5px;
+            left:50%;
+            width:0;
+            height:2px;
+            background:#ffb6c1;
+            transition:0.3s;
+            transform:translateX(-50%);
         }
-        .nav-link:hover::after {
-            width: 70%;
-        }
-        .nav-link.active {
-            color: #ffb6c1 !important;
-        }
-        .nav-link.active::after {
-            width: 70%;
-        }
-        /* Кнопки */
-        .btn-big {
-            padding: 14px 36px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border-radius: 60px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-        }
-        .btn-big:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.2);
-        }
+        .nav-link:hover::after{ width:70%; }
         .btn-primary {
             background: linear-gradient(95deg, #c0392b, #e74c3c);
             border: none;
+            border-radius: 60px;
+            padding: 10px 24px;
+            font-weight: bold;
+            transition: 0.3s;
         }
-        .btn-primary:hover {
-            background: linear-gradient(95deg, #e74c3c, #c0392b);
-        }
-        .btn-outline-crimson {
-            background: transparent;
+        .btn-primary:hover{ transform: scale(1.05); background:#e74c3c; }
+        .btn-outline-danger {
             border: 2px solid #c0392b;
             color: #c0392b;
             border-radius: 40px;
-            padding: 8px 20px;
-            transition: 0.3s;
         }
-        .btn-outline-crimson:hover {
-            background: #c0392b;
-            color: white;
-        }
-        /* Карточки товаров */
+        .btn-outline-danger:hover{ background:#c0392b; color:white; }
         .card {
             border: none;
             border-radius: 28px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: 0.4s;
             background: white;
             box-shadow: 0 12px 24px rgba(0,0,0,0.05);
             height: 100%;
         }
-        .card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 30px 40px rgba(0,0,0,0.15);
-        }
-        .card-img-top {
-            height: 260px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .card:hover .card-img-top {
-            transform: scale(1.06);
-        }
-        .price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #c0392b;
-        }
-        .old-price {
-            text-decoration: line-through;
-            font-size: 1.1rem;
-            color: #aaa;
-            margin-left: 10px;
-        }
+        .card:hover{ transform: translateY(-12px) scale(1.02); box-shadow:0 30px 40px rgba(0,0,0,0.15); }
+        .card-img-top { height: 260px; object-fit: cover; transition:0.5s; }
+        .card:hover .card-img-top{ transform:scale(1.06); }
+        .price { font-size: 1.8rem; font-weight: 800; color: #c0392b; }
+        .old-price { text-decoration: line-through; color: #aaa; margin-left: 10px; }
         .badge-hit {
             position: absolute;
             top: 18px;
@@ -173,9 +105,7 @@
             padding: 6px 16px;
             border-radius: 40px;
             font-weight: bold;
-            font-size: 0.9rem;
             z-index: 2;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         footer {
             background: #5c0e0e;
@@ -185,139 +115,112 @@
             margin-top: auto;
             border-top: 3px solid #ffb6c1;
         }
-        footer a {
-            color: #ffb6c1;
-            text-decoration: none;
-        }
-        footer a:hover {
-            color: white;
-        }
-        .stars {
-            color: #ff8c00;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
+        .stars { color: #ff8c00; font-size: 1.1rem; letter-spacing: 2px; }
         .animate-on-scroll {
             animation: fadeInUp 0.8s ease-out forwards;
+            opacity:0;
+            transform:translateY(30px);
         }
-        @media (max-width: 768px) {
-            .card-img-top { height: 200px; }
-            .price { font-size: 1.4rem; }
-            .btn-big { padding: 10px 24px; font-size: 1rem; }
-            .navbar-brand { font-size: 1.4rem; }
-            .navbar-brand img { height: 35px; }
-            .nav-link { font-size: 0.9rem; margin: 0 4px; }
+        @keyframes fadeInUp {
+            to{ opacity:1; transform:translateY(0); }
+        }
+        @media (max-width:768px){
+            .card-img-top{ height:200px; }
+            .price{ font-size:1.4rem; }
+            .navbar-brand{ font-size:1.4rem; }
         }
         .list-group-item-action.active-custom {
             background: #ffe4e8 !important;
             border-left: 4px solid #c0392b;
             font-weight: 600;
         }
-        .list-group-item-action:hover {
-            transform: translateX(5px);
-            background: #ffe4e8 !important;
-        }
-        .text-danger {
+        /* Переопределение зелёных классов на красные */
+        .text-success, .btn-success, .alert-success {
             color: #c0392b !important;
-        }
-        .btn-danger {
-            background-color: #c0392b;
-            border-color: #c0392b;
-        }
-        .btn-danger:hover {
-            background-color: #e74c3c;
-        }
-        .table-danger {
             background-color: #ffe4e8 !important;
+            border-color: #ffb6c1 !important;
+        }
+        .btn-success {
+            background-color: #c0392b !important;
+            border-color: #c0392b !important;
+            color: white !important;
+        }
+        .btn-success:hover {
+            background-color: #e74c3c !important;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container-fluid-custom">
-            <a class="navbar-brand" href="/">
-                <!-- ВАШ ЛОГОТИП: поместите файл logo.png в папку static/images/ -->
-                <img src="/static/images/logo.png" alt="CrimsonBloom">
-                <span>CrimsonBloom</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/catalog/">Каталог</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/delivery">Доставка</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">О нас</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/support">Поддержка</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/cart/"><i class="fas fa-shopping-cart"></i> Корзина</a></li>
-                    {% if current_user.is_authenticated %}
-                        {% if current_user.role == 'admin' %}
-                        <li class="nav-item"><a class="nav-link" href="/admin/">Админка</a></li>
-                        {% endif %}
-                        <li class="nav-item"><a class="nav-link" href="#">{{ current_user.username }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
-                    {% else %}
-                        <li class="nav-item"><a class="nav-link" href="/login">Вход</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/register">Регистрация</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid-custom">
+        <a class="navbar-brand" href="/">
+            <i class="fas fa-heart"></i>
+            <span>CrimsonBloom</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="/catalog/">Каталог</a></li>
+                <li class="nav-item"><a class="nav-link" href="/delivery">Доставка</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">О нас</a></li>
+                <li class="nav-item"><a class="nav-link" href="/support">Поддержка</a></li>
+                <li class="nav-item"><a class="nav-link" href="/cart/"><i class="fas fa-shopping-cart"></i> Корзина</a></li>
+                {% if current_user.is_authenticated %}
+                    {% if current_user.role == 'admin' %}
+                    <li class="nav-item"><a class="nav-link" href="/admin/">Админка</a></li>
                     {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="main-content">
-        <div class="container-fluid-custom mt-4">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                {% endfor %}
-            {% endwith %}
-            {% block content %}{% endblock %}
+                    <li class="nav-item"><a class="nav-link" href="#">{{ current_user.username }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="/login">Вход</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Регистрация</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
-
-    <footer>
-        <div class="container-fluid-custom">
-            <p>© 2026 CrimsonBloom. С любовью к цветам.</p>
-            <small>Доставка свежести 24/7 по всему городу</small>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Анимация появления элементов при скролле
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        animatedElements.forEach(el => observer.observe(el));
-
-        // Подсветка активного пункта меню
-        const currentPath = window.location.pathname;
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === currentPath || (currentPath === '/' && href === '/')) {
-                link.classList.add('active');
-            } else if (currentPath.startsWith('/catalog') && href === '/catalog/') {
-                link.classList.add('active');
-            } else if (currentPath.startsWith('/admin') && href === '/admin/') {
-                link.classList.add('active');
+</nav>
+<div class="main-content">
+    <div class="container-fluid-custom mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</div>
+<footer>
+    <div class="container-fluid-custom">
+        <p>© 2026 CrimsonBloom. С любовью к цветам.</p>
+        <small>Доставка свежести 24/7</small>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Анимация появления
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
             }
         });
-    </script>
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    // Активная ссылка
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath || (currentPath === '/' && href === '/')) link.classList.add('active');
+        else if (currentPath.startsWith('/catalog') && href === '/catalog/') link.classList.add('active');
+    });
+</script>
 </body>
 </html>
